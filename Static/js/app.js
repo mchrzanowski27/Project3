@@ -8,18 +8,18 @@ function init() {
     let dropdown3 = d3.select("#selDataset3")
 
     //read in the data for dropdown 1
-    d3.json("./data/jawn").then(function (data) {
+    d3.json("https://your_flas_kapp.com/data").then(function (data) {
 
         let dates = data.dates;
 
         for (date of dates) {
-            dropdown.append("option").text(name).property("value", name);
+            dropdown1.append("option").text(name).property("value", name);
         }
-
+        dropdown1.append("option").text("All").property("All")
     })
 
     //read in the data for dropdown 1
-    d3.json("./data/jawn").then(function (data) {
+    d3.json("https://your_flas_kapp.com/data").then(function (data) {
 
         let events = data.events;
 
@@ -30,7 +30,7 @@ function init() {
     })
 
     //read in the data for dropdown 1
-    d3.json("./data/jawn").then(function (data) {
+    d3.json("https://your_flas_kapp.com/data").then(function (data) {
 
         let actors = data.actors;
 
