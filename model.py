@@ -1,6 +1,6 @@
 from .app import db
 
-class Ukraine_Conflict(db.Project3):
+class Ukraine(db.Project3):
     __tablename__="Ukraine_Conflict"
 
     EVENT_ID_CNTY = db.Column(db.String(), primary_key= True)
@@ -17,4 +17,4 @@ class Ukraine_Conflict(db.Project3):
 	FATALITIES = db.Column(db.Integer())
 
     def __repr__(self):
-        return '<Ukraine_Conflict %r>' % (self.EVENT_DATE)
+        return '<Ukraine %r>' % (self)

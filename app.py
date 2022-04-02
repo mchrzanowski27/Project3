@@ -20,7 +20,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-from .model import Ukraine_Conflict
+from .model import Ukraine
 
 # connection = psycopg2.connect(database="Project3", user=username, password=password, host="localhost", port="5432")
 # cursor = connection.cursor()
@@ -32,9 +32,9 @@ def home():
 @app.route("/data", methods = ['POST', 'GET'])
 def data(date, event, actor):
     if request.method == 'POST':
-        events1 = db.session.query(Ukraine_Conflict).filter_by(EVENT_DATE = date).all()
-        events2 = db.session.query(Ukraine_Conflict).filter_by(EVENT_TYPE = event).all()
-        events3 = db.session.query(Ukraine_Conflict).filter_by(ACTOR1 = actor).all()
+        events1 = db.session.query(Ukraine).filter_by(EVENT_DATE = date).all()
+        events2 = db.session.query(Ukraine).filter_by(EVENT_TYPE = event).all()
+        events3 = db.session.query(Ukraine).filter_by(ACTOR1 = actor).all()
     # if request.method == 'GET':
     #     conflicts = Ukraine_Conflict.query.all()
     #     results = [
