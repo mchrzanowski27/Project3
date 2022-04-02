@@ -29,18 +29,29 @@ from .model import Ukraine
 def home():
     return render_template("index.html")
 
-@app.route("/data", methods = ['POST', 'GET'])
+@app.route("/api/data", methods = ['POST', 'GET'])
 def data(date, event, actor):
     if request.method == 'POST':
         events1 = db.session.query(Ukraine).filter_by(EVENT_DATE = date).all()
         events2 = db.session.query(Ukraine).filter_by(EVENT_TYPE = event).all()
         events3 = db.session.query(Ukraine).filter_by(ACTOR1 = actor).all()
-    # if request.method == 'GET':
-    #     conflicts = Ukraine_Conflict.query.all()
+    # elif request.method == 'GET':
+    #     conflicts = Ukraine.query.all()
     #     results = [
     #         {
-
-    #         }
+                # "EVENT_ID_CNTY": conflict.EVENT_ID_CNTY,
+	            # "EVENT_ID_NO_CNTY": conflict.EVENT_ID_NO_CNTY
+                # "EVENT_DATE": db.Column(db.String())
+                # "EVENT_TYPE": db.Column(db.String())
+                # "SUB_EVENT_TYPE": db.Column(db.String())
+                # "ACTOR1":  db.Column(db.String())
+                # "LOCATION": db.Column(db.String())
+                # "LATITUDE": db.Column(db.Float())
+                # "LONGITUDE": db.Column(db.Float())
+                # "SOURCE": db.Column(db.String)
+                # "NOTES": db.Column(db.String)
+                # "FATALITIES": conflict.FATALITIES
+    #         } for conflict in conflicts
     #     ]
 
 
