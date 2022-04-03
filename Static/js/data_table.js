@@ -1,47 +1,45 @@
 
 
-var data = 
-		
-function optionChanged(date, event, actor) {
-    d3.json("https://your_flas_kapp.com/data").then(function (data) {
-
-    let table_data = data.csv
-    let data_table = table_data.filter((sampleJawn) => sampleJawn.id == sample);
-
-
-})
+var data = function optionChanged(date, event, actor) {
+    // d3.json("https://your_flas_kapp.com/data").then(function (data) {
+    d3.csv("Project_3_Test_to_SQL.csv", function(data) {
+        let table_data = Project_3_Test_to_SQL.csv
+        let data_table = table_data.filter(filterJawn => {filterJawn.event_date == date
+            && filerJawn.event_type == event
+            && filterJawn.actor1 == actor})
+    })
 }
 
 function tabulate(data, columns) {
-	var table = d3.select('body').append('table')
-	var thead = table.append('thead')
-	var	tbody = table.append('tbody');
+    var table = d3.select('body').append('table')
+    var thead = table.append('thead')
+    var tbody = table.append('tbody');
 
-	// append the header row
-	thead.append('tr')
-	  .selectAll('th')
-	  .data(columns).enter()
-	  .append('th')
-	    .text(function (column) { return column; });
+    // append the header row
+    thead.append('tr')
+        .selectAll('th')
+        .data(columns).enter()
+        .append('th')
+        .text(function (column) { return column; });
 
-	// create a row for each object in the data
-	var rows = tbody.selectAll('tr')
-	  .data(data)
-	  .enter()
-	  .append('tr');
+    // create a row for each object in the data
+    var rows = tbody.selectAll('tr')
+        .data(data)
+        .enter()
+        .append('tr');
 
-	// create a cell in each row for each column
-	var cells = rows.selectAll('td')
-	  .data(function (row) {
-	    return columns.map(function (column) {
-	      return {column: column, value: row[column]};
-	    });
-	  })
-	  .enter()
-	  .append('td')
-	    .text(function (d) { return d.value; });
+    // create a cell in each row for each column
+    var cells = rows.selectAll('td')
+        .data(function (row) {
+            return columns.map(function (column) {
+                return { column: column, value: row[column] };
+            });
+        })
+        .enter()
+        .append('td')
+        .text(function (d) { return d.value; });
 
-  return table;
+    return table;
 }
 
 // render the tables
@@ -58,8 +56,8 @@ function init() {
     let dropdown3 = d3.select("#selDataset3")
 
     //read in the data for dropdown 1
-    d3.csv("data.csv", function(data){
-    // d3.json("https://your_flas_kapp.com/data").then(function (data) {
+    d3.csv("Project_3_Test_to_SQL.csv", function (data) {
+        // d3.json("https://your_flas_kapp.com/data").then(function (data) {
 
         let dates = data.event_date;
         for (date of dates) {
@@ -69,10 +67,10 @@ function init() {
     })
     //read in the data for dropdown 2
     // d3.json("https://your_flas_kapp.com/data").then(function (data) {
-    d3.csv("data.csv", function(data){
+    d3.csv("Project_3_Test_to_SQL.csv", function (data) {
 
         let event_type = data.events;
-        for ( event of events) {
+        for (event of events) {
             dropdown2.append("option").text(jawn).property("value", jawn);
         }
         dropdown1.append("option").text("All").property("All");
@@ -80,13 +78,13 @@ function init() {
 
     //read in the data for dropdown 3
     // d3.json("https://your_flas_kapp.com/data").then(function (data) {
-    d3.csv("data.csv", function(data){
+    d3.csv("Project_3_Test_to_SQL.csv", function (data) {
         let actors = data.actor1;
         for (actor of actors) {
             dropdown3.append("option").text(actor).property("value", actor);
         }
         dropdown1.append("option").text("All").property("All")
-    }) 
+    })
     optionChanged("All", "All", "All");
 }
 
