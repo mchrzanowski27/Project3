@@ -13,8 +13,8 @@ class Ukraine(db.Project3):
     LOCATION = db.Column(db.String())
     LATITUDE = db.Column(db.Float())
     LONGITUDE = db.Column(db.Float())
-    SOURCE = db.Column(db.String)
-    NOTES = db.Column(db.String)
+    SOURCE = db.Column(db.String())
+    NOTES = db.Column(db.String())
     FATALITIES = db.Column(db.Integer())
 
     def __repr__(self):
