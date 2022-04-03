@@ -20,8 +20,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
-from models import Ukraine
-
 @app.route("/")
 def home():
     # return render_template("index.html")
@@ -39,6 +37,8 @@ def data():
     #     events2 = db.session.query(Ukraine).filter_by(EVENT_TYPE=event).all()
     #     events3 = db.session.query(Ukraine).filter_by(ACTOR1=actor).all()
     # elif:
+    from models import Ukraine
+    
     conflicts = db.session.query(Ukraine.EVENT_ID_CNTY, Ukraine.EVENT_ID_NO_CNTY, Ukraine.EVENT_DATE, Ukraine.EVENT_TYPE, Ukraine.SUB_EVENT_TYPE, Ukraine.ACTOR1, Ukraine.LOCATION, Ukraine.LATITUDE, Ukraine.LONGITUDE, Ukraine.SOURCE, Ukraine.NOTES, Ukraine.FATALITIES).all()
 
     results = [

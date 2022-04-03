@@ -1,7 +1,7 @@
 from app import db
 
 
-class Ukraine(db.Project3):
+class Ukraine(db.Model):
     __tablename__ = "Ukraine_Conflict"
 
     EVENT_ID_CNTY = db.Column(db.String(), primary_key=True)
