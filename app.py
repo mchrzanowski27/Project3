@@ -22,12 +22,12 @@ db = SQLAlchemy(app)
 
 @app.route("/")
 def home():
-    # return render_template("index.html")
-    return (
-        "Welcome!<br/>"
-        "Available routes:<br/>"
-        f"/api/data"
-    )
+    return render_template("index.html")
+    # return (
+    #     "Welcome!<br/>"
+    #     "Available routes:<br/>"
+    #     f"/api/data"
+    # )
 
 
 @app.route("/api/data", methods=['POST', 'GET'])

@@ -1,47 +1,55 @@
 //JS file - Phoebe messing with dropdown ideas
+d3.json("/api/data").then(function(data){
+    console.log(data);
 
+    let actors = data.ACTOR1;
+    console.log(actors);
 
-function init() {
+    let deaths = data.FATALITIES;
+    console.log(deaths);
+});
 
-    let dropdown1 = d3.select("#selDataset1")
-    let dropdown2 = d3.select("#selDataset2")
-    let dropdown3 = d3.select("#selDataset3")
+// function init() {
 
-    //read in the data for dropdown 1
-    d3.json("https://your_flas_kapp.com/data").then(function (data) {
+//     let dropdown1 = d3.select("#selDataset1")
+//     let dropdown2 = d3.select("#selDataset2")
+//     let dropdown3 = d3.select("#selDataset3")
 
-        let dates = data.dates;
+//     //read in the data for dropdown 1
+//     d3.json("https://your_flas_kapp.com/data").then(function (data) {
 
-        for (date of dates) {
-            dropdown1.append("option").text(name).property("value", name);
-        }
-        dropdown1.append("option").text("All").property("All")
-    })
+//         let dates = data.dates;
 
-    //read in the data for dropdown 1
-    d3.json("https://your_flas_kapp.com/data").then(function (data) {
+//         for (date of dates) {
+//             dropdown1.append("option").text(name).property("value", name);
+//         }
+//         dropdown1.append("option").text("All").property("All")
+//     })
 
-        let events = data.events;
+//     //read in the data for dropdown 1
+//     d3.json("https://your_flas_kapp.com/data").then(function (data) {
 
-        for (event of events) {
-            dropdown.append("option").text(name).property("value", name);
-        }
+//         let events = data.events;
 
-    })
+//         for (event of events) {
+//             dropdown.append("option").text(name).property("value", name);
+//         }
 
-    //read in the data for dropdown 1
-    d3.json("https://your_flas_kapp.com/data").then(function (data) {
+//     })
 
-        let actors = data.actors;
+//     //read in the data for dropdown 1
+//     d3.json("https://your_flas_kapp.com/data").then(function (data) {
 
-        for (actor of actors) {
-            dropdown.append("option").text(name).property("value", name);
-        }
+//         let actors = data.actors;
 
-    })
+//         for (actor of actors) {
+//             dropdown.append("option").text(name).property("value", name);
+//         }
 
-    optionChanged(allDates, allEvents, allActors);
+//     })
+
+//     optionChanged(allDates, allEvents, allActors);
     
-}
+// }
 
-init()
+// init()
