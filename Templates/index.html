@@ -15,32 +15,54 @@
   </head>
   <body>
     <div class="container">
-        <div class="row">
-          <div class="col-md-12 jumbotron text-center">
-            <h1>Ukraine Conflict</h1>
-            <p>Use the interactive charts to examine the conflict</p>
+      <div class="row">
+        <div class="col-md-12 jumbotron text-center">
+          <h1>Ukraine Conflict</h1>
+          <p>Use the interactive charts to examine the conflict</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2">
+          <div class="well">
+            <h5>Date:</h5>
+            <select
+              id="selDataset1"
+              onchange="optionChanged(this.value)"
+            ></select>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-2">
-            <div class="well">
-              <h5>Date:</h5>
-              <select id="selDataset1" onchange="optionChanged(this.value)"></select>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="well">
-              <h5>Event Type:</h5>
-              <select id="selDataset2" onchange="optionChanged(this.value)"></select>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <div class="well">
-              <h5>Actor:</h5>
-              <select id="selDataset3" onchange="optionChanged(this.value)"></select>
-            </div>
+        <div class="col-md-2">
+          <div class="well">
+            <h5>Event Type:</h5>
+            <select
+              id="selDataset2"
+              onchange="optionChanged(this.value)"
+            ></select>
           </div>
         </div>
+        <div class="col-md-2">
+          <div class="well">
+            <h5>Actor:</h5>
+            <select
+              id="selDataset3"
+              onchange="optionChanged(this.value)"
+            ></select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="map"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <div id="graph1"></div>
+        </div>
+        <div class="col-md-5">
+          <div id="graph2"></div>
+        </div>
+      </div>
     </div>
 
     <script src="https://d3js.org/d3.v5.min.js"></script>
