@@ -1,14 +1,29 @@
 
-
-var data = function optionChanged(date, event, actor) {
+function dateChange(date) {
     // d3.json("https://your_flas_kapp.com/data").then(function (data) {
-    d3.csv("Project_3_Test_to_SQL.csv", function(data) {
-        let table_data = Project_3_Test_to_SQL.csv
-        let data_table = table_data.filter(filterJawn => {filterJawn.event_date == date
-            && filerJawn.event_type == event
-            && filterJawn.actor1 == actor})
+    d3.csv("./Static/Project_3_Test_to_SQL.csv", function (data) {
+
+        let dropdown2 = d3.select("#selDataset2")
+        let dropdown3 = d3.select("#selDataset3")
+
+        if (date == 'All' || date == 'Any') {
+            d3.select('#selDataset2').property('value', 'All');
+            d3.select('#selDataset3').property('value', 'All');
+        } else {
+
+            let data1 = Project_3_Test_to_SQL.csv
+            let dd_data = table_data.filter(filterJawn => {filterJawn.event_date == date 
+            })
+            for(dd of dd_data){
+                dropdown2.append("option").text(event_type).property("value", event_type);
+                dropdown3.append("option").text(actor).property("value", actor);
+            }
+        }
     })
+
 }
+
+// let data_imp = optionChanged()
 
 function tabulate(data, columns) {
     var table = d3.select('body').append('table')
@@ -42,10 +57,22 @@ function tabulate(data, columns) {
     return table;
 }
 
+function renderTables(data_imp) {
+    d3.csv("Project_3_Test_to_SQL.csv", function (error, data) {
+        let headerNames = d3.keys(data[0])
+        let headerList = []
+
+        for (headerName of headerNames) {
+            headerList.append(headerName)
+        }
+
+        tabulate(data_imp, [headerList]);
+
+    })
+}
+
 // render the tables
-tabulate(data, ['date', 'close']); // 2 column table
-tabulate(data, ['date']); // table with only date column
-tabulate(data, ['close']); // table with only close column
+
 
 //JS file - Phoebe messing with dropdown ideas
 
@@ -56,36 +83,42 @@ function init() {
     let dropdown3 = d3.select("#selDataset3")
 
     //read in the data for dropdown 1
-    d3.csv("Project_3_Test_to_SQL.csv", function (data) {
+    d3.csv("./Static/Project_3_Test_to_SQL.csv", function (data) {
         // d3.json("https://your_flas_kapp.com/data").then(function (data) {
 
-        let dates = data.event_date;
+        let dates = data.EVENT_DATE;
         for (date of dates) {
             dropdown1.append("option").text(date).property("value", date);
         }
         dropdown1.append("option").text("All").property("All")
+        dropdown2.append("option").text("Any").property("Any")
+
     })
     //read in the data for dropdown 2
     // d3.json("https://your_flas_kapp.com/data").then(function (data) {
-    d3.csv("Project_3_Test_to_SQL.csv", function (data) {
+    d3.csv("./Static/Project_3_Test_to_SQL.csv", function (data) {
 
-        let event_type = data.events;
-        for (event of events) {
-            dropdown2.append("option").text(jawn).property("value", jawn);
+        let event_types = data.EVENT_TYPE;
+        for (event_type of event_types) {
+            dropdown2.append("option").text(event_type).property("value", event_type);
         }
-        dropdown1.append("option").text("All").property("All");
+        dropdown2.append("option").text("All").property("All")
+        dropdown2.append("option").text("Any").property("Any")
     })
 
     //read in the data for dropdown 3
     // d3.json("https://your_flas_kapp.com/data").then(function (data) {
-    d3.csv("Project_3_Test_to_SQL.csv", function (data) {
-        let actors = data.actor1;
+    d3.csv("./Static/Project_3_Test_to_SQL.csv", function (data) {
+        let actors = data.ACTOR1;
         for (actor of actors) {
             dropdown3.append("option").text(actor).property("value", actor);
         }
-        dropdown1.append("option").text("All").property("All")
+        dropdown3.append("option").text("All").property("All")
+        dropdown2.append("option").text("Any").property("Any")
     })
-    optionChanged("All", "All", "All");
+    d3.select('#selDataset1').property('value', 'All');
+    d3.select('#selDataset2').property('value', 'All');
+    d3.select('#selDataset3').property('value', 'All');
 }
 
 init()
