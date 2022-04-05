@@ -1,0 +1,14 @@
+.bg-image {
+    /* background-image: url("https://www.reuters.com/resizer/MW38t2pN21jig9I4Ez9Z8hq-Vto=/960x0/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/TP2HFJ63ARPQTHFYUYFAAQZXWQ.jpg"); */
+    background-image: linear-gradient(blue, yellow);
+    background-repeat: no-repeat;
+    height: 350px;
+};
+
+.d-flex {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+};
+
+/* linear-gradient(blue, yellow) */
