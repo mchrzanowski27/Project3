@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<meta charset='utf-8'>
+<html>
+
+<head>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <div class="well">
+          <h5>Date</h5>
+          <select id="selDataset1" onchange=" dateChange(this.value)"></select>
+        </div>
+        <div class="well">
+          <h5>Event Type</h5>
+          <select id="selDataset2" onchange="eventChange(this.value)"></select>
+        </div>
+        <div class="well">
+          <h5>Actor</h5>
+          <select id="selDataset2" onchange="actorChange(this.value)"></select>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script type='text/javascript' src='./static/js/data_table.js'></script>
+
+</body>
