@@ -1,13 +1,31 @@
-//JS file - Phoebe messing with dropdown ideas
 d3.json("/api/data").then(function(data){
     console.log(data);
 
-    let actors = data.ACTOR1;
-    console.log(actors);
+    console.log(data[0].ACTOR1)
+    
+    let actors = []
+    for (row of data)
+    //    actors = row.ACTOR1;
+        console.log(row.ACTOR1);
 
-    let deaths = data.FATALITIES;
-    console.log(deaths);
+    // console.log(actors);
+
+    let trace1 = [
+        {
+            x: data.map(row=> row.ACTOR1),
+            y: data.map(row=> row.FATALITIES),
+            type: "bar"
+        }
+    ];
+
+    let layout = {
+        title: "Fatalities by Actor"
+    };
+
+    Plotly.newPlot("graph1", trace1, layout);
 });
+
+//JS file - Phoebe messing with dropdown ideas
 
 // function init() {
 
