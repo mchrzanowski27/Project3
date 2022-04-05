@@ -45,7 +45,7 @@ function eventChange(event) {
             }
         } else {
             let dd_data = data1.filter(filterJawn => {
-                filterJawn.event_date == date && filterJawn.EVENT_TYPE
+                filterJawn.event_date == date && filterJawn.EVENT_TYPE ==event
             })
             for (dd of dd_data) {
                 dropdown3.append("option").text(actor).property("value", actor);
