@@ -1,15 +1,13 @@
 d3.json("/api/data").then(function(data){
     console.log(data);
 
-    console.log(data[0].ACTOR1)
+    // console.log(data[0].ACTOR1)
     
-    let actors = []
-    for (row of data)
-    //    actors = row.ACTOR1;
-        console.log(row.ACTOR1);
+    // let actors = []
+    // for (row of data)
+    //     console.log(row.ACTOR1);
 
-    // console.log(actors);
-
+    //Bar graph of fatalities by actor
     let trace1 = [
         {
             x: data.map(row=> row.ACTOR1),
@@ -23,6 +21,21 @@ d3.json("/api/data").then(function(data){
     };
 
     Plotly.newPlot("graph1", trace1, layout);
+
+    //Bar graph of sub-events by actor- make stacked bar graph?
+    let trace2=[
+        {
+            x: data.map(row=>row.SUB_EVENT_TYPE),
+            y: data.map(row=>row.ACTOR1),
+            type: "bar"
+        }
+    ];
+
+    let layout2 = {
+        title: "Violence by Actor"
+    };
+
+    Plotly.newPlot("graph2", trace2, layout2);
 });
 
 //JS file - Phoebe messing with dropdown ideas
