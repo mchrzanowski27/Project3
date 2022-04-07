@@ -7,13 +7,13 @@ from flask import (
     request,
     redirect)
 import psycopg2
-from config import username
-from config import password
+# from config import username
+# from config import password
 
 app = Flask(__name__)
 
 from flask_sqlalchemy import SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{username}:{password}@localhost:5432/Project3"
+app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://postgres:88,Bc4Fvu@localhost:5432/Project_3"
 
 # Remove tracking modifications
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -59,6 +59,10 @@ def data():
     ]
 
     return jsonify(results)
+
+@app.route("/dataPage")
+def dataPage():
+    return render_template("dataPage.html")
 
 
 if __name__ == "__main__":
