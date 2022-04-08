@@ -42,7 +42,7 @@
   new agGrid.Grid(eGridDiv, gridOptions);
 
   // fetch the row data to use and one ready provide it to the Grid via the Grid API
-  fetch('../api/data')
+  fetch('/api/data')
       .then(response => response.json())
       .then(data => {
           gridOptions.api.setRowData(data);
