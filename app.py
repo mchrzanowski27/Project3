@@ -60,6 +60,10 @@ def data():
 
     return jsonify(results)
 
+@app.route("/dataPage")
+def dataPage():
+    return render_template("dataPage.html")
+
 
 if __name__ == "__main__":
     app.run()
