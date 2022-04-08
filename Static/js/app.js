@@ -29,51 +29,46 @@ d3.json("/api/data").then(function(data){
     //Bar graph of fatalities by actor
     let trace1 = [
         {
-            x: sub_type,
-            y: fatalities,
-            type: "bar",
-            hoverinfo:"skip",
+            // x: sub_type,
+            // y: fatalities,
+            // type: "bar",
+            // hoverinfo:"skip",
+            values: fatalities,
+            labels: sub_type,
+            type: "pie",
+            
         }
     ];
         
     let layout = {
         title: "Fatalities by Actor",
-        yaxis: {
-            title: "Fatalities",
-        }
+        // yaxis: {
+        //     title: "Fatalities",
+        height: 600,
+        width: 700,
     };
 
     Plotly.newPlot("graph1", trace1, layout);
-
-    //Bar graph of sub-events by actor- very similar to above graph
-    let trace2=[
-        {
-            x: sub_type,
-            type: "bar"
-        }
-    ];
-
-    let layout2 = {
-        title: "Violence by Actor",
-    };
-
-    // Plotly.newPlot("graph2", trace2, layout2);
 
     // let filteredDate = filteredActor.filter(row=>row.EVENT_DATE === row.EVENT_DATE);
     // console.log(filteredDate);
 
     let trace3 = [
         {
-            // x: filteredActor.reduce((sum, current)=>sum + current.LOCATION, 0),
-            // x: filteredActor.filter(row=> row.EVENT_DATE).length,
-            x: filteredActor.map(row=> row.EVENT_DATE),
-            y: filteredActor.map(row=> row.FATALITIES),
+            x: filteredEvent.map(row=> row.EVENT_DATE),
+            y: filteredEvent.map(row=> row.FATALITIES),
             type: "bar",
+            transforms: [{
+                type: "groupby",
+                groups: filteredEvent.map(row => row.SUB_EVENT_TYPE),
+            }],
+            // colorscale: 'YlOrRd',
+            // hoverinfo:"skip",
         }
     ];
 
     let layout3 = {
-        title: "Fatalities by Actor by Date",
+        title: "Fatalities by Date",
         yaxis: {
             title: "Fatalities",
         }
@@ -82,20 +77,25 @@ d3.json("/api/data").then(function(data){
     Plotly.newPlot("graph2", trace3, layout3);
 
     //Bubble chart of sub event type by actor?
-    let bubble = [
-        {
-            x: filteredActor.map(row => row.SUB_EVENT_TYPE),
-            text:filteredActor.map(row => row.SUB_EVENT_TYPE),
-            mode: "markers",
-        //     marker: {
-        //         size: filteredActor.map(row=>row.FATALITIES),
-        //     }
-        }
-    ];
+    // let bubble = [
+    //     {
+    //         x: filteredActor.map(row => row.EVENT_DATE),
+    //         text:filteredActor.map(row => row.SUB_EVENT_TYPE),
+    //         type: "scatter",
+    //         transforms: [{
+    //             type: "groupby",
+    //             groups: filteredActor.map(row => row.EVENT_DATE),
+    //         }]
+    //         mode: "markers",
+    //         marker: {
+    //             size: filteredActor.map(row=>row.FATALITIES),
+    //         }
+    //     }
+    // ];
 
-    let bubble_layout = {
-        title: "Violence by Actor",
-    };
+    // let bubble_layout = {
+    //     title: "Violence by Actor",
+    // };
 
     // Plotly.newPlot("graph2", bubble, bubble_layout);
 });
