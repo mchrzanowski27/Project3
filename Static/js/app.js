@@ -62,8 +62,6 @@ d3.json("/api/data").then(function(data){
                 type: "groupby",
                 groups: filteredEvent.map(row => row.SUB_EVENT_TYPE),
             }],
-            // colorscale: 'YlOrRd',
-            // hoverinfo:"skip",
         }
     ];
 
