@@ -6,7 +6,7 @@ function charts (actor, type) {
         // let actor = "Military Forces of Ukraine (2019-)";
         // let type = "Explosions";
 
-        
+        //Getting data for graphs
         let filteredActor = data.filter(row => row.ACTOR1 === actor);
         console.log(filteredActor);
 
@@ -25,9 +25,6 @@ function charts (actor, type) {
 
         let sub_type = filteredEvent.map(row=> row.SUB_EVENT_TYPE);
         console.log(sub_type);
-
-        // let sum = filteredEvent.reduce((sum, current)=>sum + current.FATALITIES, 0);
-        // console.log(sum);
 
         //Bar graph of fatalities by actor
         let trace1 = [
