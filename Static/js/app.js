@@ -1,29 +1,29 @@
-d3.json("/api/data").then(function(data){
-    console.log(data);
+// d3.json("../api/data").then(function(data){
+//     console.log(data);
 
-    console.log(data[0].ACTOR1)
+//     console.log(data[0].ACTOR1)
     
-    let actors = []
-    for (row of data)
-    //    actors = row.ACTOR1;
-        console.log(row.ACTOR1);
+//     let actors = []
+//     for (row of data)
+//     //    actors = row.ACTOR1;
+//         console.log(row.ACTOR1);
 
-    // console.log(actors);
+//     // console.log(actors);
 
-    let trace1 = [
-        {
-            x: data.map(row=> row.ACTOR1),
-            y: data.map(row=> row.FATALITIES),
-            type: "bar"
-        }
-    ];
+//     let trace1 = [
+//         {
+//             x: data.map(row=> row.ACTOR1),
+//             y: data.map(row=> row.FATALITIES),
+//             type: "bar"
+//         }
+//     ];
 
-    let layout = {
-        title: "Fatalities by Actor"
-    };
+//     let layout = {
+//         title: "Fatalities by Actor"
+//     };
 
-    Plotly.newPlot("graph1", trace1, layout);
-});
+//     Plotly.newPlot("graph1", trace1, layout);
+// });
 
 
 // function dateChange(date) {
@@ -88,11 +88,11 @@ function init() {
     // let dropdown3 = d3.select("#selDataset3")
 
     //read in the data for dropdown 1
-    d3.json("../api/data").then(function (data) {
+    d3.json("api/data").then(function (data) {
 
-        let event_dates = data.event_date;
-        console.log(event_dates)
-        for (event_date of event_dates) {
+        let event_types = data.sub_event_type;
+        console.log(event_types)
+        for (event_type of event_types) {
             dropdown1.append("option").text(event_date).property("value", event_date);
         }
         // dropdown1.append("option").text("All").property("value", "All")
