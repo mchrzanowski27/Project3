@@ -58,8 +58,8 @@
       </header>
       <h1>Ukraine Invasion Data</h1>
       <h3>Data used comes from...</h3>
-      <div class="container">
-        <div id="myGrid" class="ag-theme-alpine"></div>
+      <div class="flex-container">
+        <div id="myGrid" style = "height: 500px ;width: 1000px;" class="ag-theme-alpine"></div>
 
         <script type="text/javascript" charset="utf-8">
           // specify the columns
@@ -91,7 +91,6 @@
           // create the grid passing in the div to use together with the columns & data we want to use
           new agGrid.Grid(eGridDiv, gridOptions);
 
-      </div >
             // fetch the row data to use and one ready provide it to the Grid via the Grid API
             fetch('/api/data')
               .then(response => response.json())
@@ -99,6 +98,8 @@
                 gridOptions.api.setRowData(data);
               });
         </script>
+      </div >
+
   </body>
 
 </html>

@@ -1,85 +1,33 @@
-// d3.json("../api/data").then(function(data){
-//     console.log(data);
-
-//     console.log(data[0].ACTOR1)
-    
-//     let actors = []
-//     for (row of data)
-//     //    actors = row.ACTOR1;
-//         console.log(row.ACTOR1);
-
-//     // console.log(actors);
-
-//     let trace1 = [
-//         {
-//             x: data.map(row=> row.ACTOR1),
-//             y: data.map(row=> row.FATALITIES),
-//             type: "bar"
-//         }
-//     ];
-
-//     let layout = {
-//         title: "Fatalities by Actor"
-//     };
-
-//     Plotly.newPlot("graph1", trace1, layout);
-// });
 
 
-// function dateChange(date) {
-//     d3.json("/api/data").then(function (data) {
+function eventChange(event) {
+    d3.json("/api/data").then(function (data) {
 
-//         let dropdown2 = d3.select("#selDataset2")
-//         let datad = data.event_type
-//         if (date == 'Any' || date == 'All') {
+        let event = d3.select("#selDataset1").node().value;
+        let dropdown2 = d3.select("#selDataset2")
+        let actors1 = data.map(i => i.ACTOR1)
+        uniqueSet2 = new Set(actors1)
+        actors = Array.from(uniqueSet2)
+        dropdown2.append("option").text("All").property("value", "All")
+        actors.sort()
 
-//             for (dd of datad) {
-//                 dropdown2.append("option").text(event_type).property("value", event_type);
-//             }
-//         } else {
-//             let dd_data = datad.filter(filterJawn => {
-//                 filterJawn.event_date == date
-//             })
-//             for (dd of dd_data) {
-//                 dropdown2.append("option").text(event_type).property("value", event_type);
-//             }
-//         }
-//     })
+        if (event == 'All' || event == 'Any') {
+            for (actor of actors) {
+                dropdown2.append("option").text(actor).property("value", actor);
+            }
+        } else  {
+            actors = data.filter(filterJawn => {
+                filterJawn.event_type == event
+            }).map( i=> i.ACTOR1)
+            for (actor of actors) {
+                dropdown2.append("option").text(actor).property("value", actor);
+            }
+        }         
+    })
 
-// }
+}
 
-// function eventChange(event) {
-//     d3.json("/api/data").then(function (data) {
-
-//         let date = d3.select("#selDataset1").node().value;
-//         let dropdown3 = d3.select("#selDataset3")
-//         let datad = data.ACTOR1
-
-//         if ((event == 'All' || event == 'Any') && (date == 'All' || date == 'Any')) {
-//             for (dd of datad) {
-//                 dropdown3.append("option").text(actor1).property("value", actor1);
-//             }
-
-//         } else if ((event == 'All' || event == 'Any') && date != 'All' && date != 'Any') {
-
-//             let dd_data = data1.filter(filterJawn => {
-//                 filterJawn.event_date == date
-//             })
-//             for (dd of dd_data) {
-//                 dropdown3.append("option").text(actor).property("value", actor);
-//             }
-//         } else {
-//             let dd_data = data1.filter(filterJawn => {
-//                 filterJawn.event_date == date && filterJawn.EVENT_TYPE ==event
-//             })
-//             for (dd of dd_data) {
-//                 dropdown3.append("option").text(actor).property("value", actor);
-//             }
-//         }
-//     })
-
-// }
-
+// let info;
 
 function init() {
 
@@ -88,22 +36,28 @@ function init() {
     // let dropdown3 = d3.select("#selDataset3")
 
     //read in the data for dropdown 1
-    d3.json("/api/data").then(function (data) {
 
-        let event_types = data.sub_event_type;
+    d3.json("/api/data").then(function (data) {
+        //info = data;
+        let event_types1 = data.map( i => i.EVENT_TYPE );
+        uniqueSet = new Set(event_types1)
+        event_types = Array.from(uniqueSet)
+        // event_types.sort((a, b) => a.EVENT_TYPE.localCompare(b.EVENT_TYPE))
         console.log(event_types)
+        event_types.sort()
+        dropdown1.append("option").text("All").property("value", "All")
+        dropdown1.append("option").text("Any").property("value", "Any")
         for (event_type of event_types) {
-            dropdown1.append("option").text(event_type).property("value", event_type);
+            // if(!dropdown1.option.value(event_type))
+                dropdown1.append("option").text(event_type).property("value", event_type);
         }
-        // dropdown1.append("option").text("All").property("value", "All")
-        // dropdown1.append("option").text("Any").property("value", "Any")
-        // dropdown1.append("option").text("--").property("value", "")
+
         // dropdown2.append("option").text("--").property("value", "")
         // dropdown3.append("option").text("--").property("value", "")
 
     })
 
-    // d3.select('#selDataset1').property('value', 'All');
+    d3.select('#selDataset1').property('value', 'All');
     // d3.select('#selDataset2').property('value', '');
     // d3.select('#selDataset3').property('value', '');
 }
