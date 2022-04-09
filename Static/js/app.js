@@ -32,7 +32,6 @@ function eventChange(event) {
 function init() {
 
     let dropdown1 = d3.select("#selDataset1")
-    // let dropdown2 = d3.select("#selDataset2")
 
     //read in the data for dropdown 1
 
@@ -57,8 +56,6 @@ function init() {
     })
 
     d3.select('#selDataset1').property('value', 'All');
-    // d3.select('#selDataset2').property('value', '');
-    // d3.select('#selDataset3').property('value', '');
 }
 
 init()
