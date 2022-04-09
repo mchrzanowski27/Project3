@@ -32,21 +32,14 @@ function charts (actor, type) {
         //Bar graph of fatalities by actor
         let trace1 = [
             {
-                // x: sub_type,
-                // y: fatalities,
-                // type: "bar",
-                // hoverinfo:"skip",
                 values: fatalities,
                 labels: sub_type,
-                type: "pie",
-                
+                type: "pie",    
             }
         ];
             
         let layout = {
             title: "Fatalities by Actor",
-            // yaxis: {
-            //     title: "Fatalities",
             height: 600,
             width: 700,
         };
