@@ -5,13 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="keywords" content>
-    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Ukraine Conflict</title>
-
     <link rel="stylesheet" href="/static/css/style.css" />
 
+    <title>Ukraine Conflict</title>
 </head>
 <body>
     <div class="hero_area">
@@ -28,19 +25,19 @@
                     <div class="navbar-collapse ml-auto collapse show" id="navbarSupportedContent" style>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="index2.html">
+                                <a class="nav-link" href="./index2.html">
                                     Home
                                     <span class="Sr-only"></span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="maps.html"> Map </a>
+                                <a class="nav-link" href="./maps.html"> Map </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="dataPage.html"> Data </a>
+                                <a class="nav-link" href="./dataPage.html"> Data </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="Resources.html"> Resources </a>
+                                <a class="nav-link" href="./Resources.html"> Resources </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="https://github.com/mchrzanowski27/Project3"> Repository </a>
@@ -50,6 +47,35 @@
                 </nav>
             </div>
         </header>
+        <div class="row">
+            <div class="col-md-2">
+              <div class="well">
+                <h5>Date:</h5>
+                <select
+                  id="selDataset1"
+                  onchange="dateChange(this.value)"
+                ></select>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="well">
+                <h5>Event Type:</h5>
+                <select
+                  id="selDataset2"
+                  onchange="eventChange(this.value)"
+                ></select>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="well">
+                <h5>Actor:</h5>
+                <select
+                  id="selDataset3"
+                  onchange="actorChange(this.value)"
+                ></select>
+              </div>
+            </div>
+          </div>
         <section class="slider_section position-relative">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -108,7 +134,10 @@
             </div>
         </section>
     </div>
-    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <!-- <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script> -->
+    <script type="text/javascript" src="../static/js/app.js"></script> 
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 </body>
 </html>

@@ -1,34 +1,33 @@
-d3.json("/api/data").then(function(data){
-    console.log(data);
+// d3.json("/api/data").then(function(data){
+//     console.log(data);
 
-    console.log(data[0].ACTOR1)
+//     console.log(data[0].ACTOR1)
     
-    let actors = []
-    for (row of data)
-    //    actors = row.ACTOR1;
-        console.log(row.ACTOR1);
+//     let actors = []
+//     for (row of data)
+//     //    actors = row.ACTOR1;
+//         console.log(row.ACTOR1);
 
-    // console.log(actors);
+//     // console.log(actors);
 
-    let trace1 = [
-        {
-            x: data.map(row=> row.ACTOR1),
-            y: data.map(row=> row.FATALITIES),
-            type: "bar"
-        }
-    ];
+//     let trace1 = [
+//         {
+//             x: data.map(row=> row.ACTOR1),
+//             y: data.map(row=> row.FATALITIES),
+//             type: "bar"
+//         }
+//     ];
 
-    let layout = {
-        title: "Fatalities by Actor"
-    };
+//     let layout = {
+//         title: "Fatalities by Actor"
+//     };
 
-    Plotly.newPlot("graph1", trace1, layout);
-});
+//     Plotly.newPlot("graph1", trace1, layout);
+// });
 
 
 // function dateChange(date) {
-//     // d3.json("https://your_flas_kapp.com/data").then(function (data) {
-//     d3.csv("../Project_3_Test_to_SQL.csv", function (data) {
+//     d3.json("/api/data").then(function (data) {
 
 //         let dropdown2 = d3.select("#selDataset2")
 //         let datad = data.event_type
@@ -50,8 +49,7 @@ d3.json("/api/data").then(function(data){
 // }
 
 // function eventChange(event) {
-//     // d3.json("https://your_flas_kapp.com/data").then(function (data) {
-//     d3.csv("../Project_3_Test_to_SQL.csv", function (data) {
+//     d3.json("/api/data").then(function (data) {
 
 //         let date = d3.select("#selDataset1").node().value;
 //         let dropdown3 = d3.select("#selDataset3")
@@ -82,35 +80,32 @@ d3.json("/api/data").then(function(data){
 
 // }
 
-// let data_imp = optionChanged()
 
+function init() {
 
-// function init() {
+    let dropdown1 = d3.select("#selDataset1")
+    // let dropdown2 = d3.select("#selDataset2")
+    // let dropdown3 = d3.select("#selDataset3")
 
-//     let dropdown1 = d3.select("#selDataset1")
-//     let dropdown2 = d3.select("#selDataset2")
-//     let dropdown3 = d3.select("#selDataset3")
+    //read in the data for dropdown 1
+    d3.json("/api/data").then(function (data) {
 
-//     //read in the data for dropdown 1
-//     d3.csv("../Static/Project_3_Test_to_SQL.csv", function (data) {
-//         // d3.json("https://your_flas_kapp.com/data").then(function (data) {
+        let event_dates = data.event_date;
+        console.log(event_dates)
+        for (event_date of event_dates) {
+            dropdown1.append("option").text(event_date).property("value", event_date);
+        }
+        // dropdown1.append("option").text("All").property("value", "All")
+        // dropdown1.append("option").text("Any").property("value", "Any")
+        // dropdown1.append("option").text("--").property("value", "")
+        // dropdown2.append("option").text("--").property("value", "")
+        // dropdown3.append("option").text("--").property("value", "")
 
-//         let event_dates = data.event_date;
-//         console.log(event_dates)
-//         for (event_date of event_dates) {
-//             dropdown1.append("option").text(date).property("value", date);
-//         }
-//         dropdown1.append("option").text("All").property("value", "All")
-//         dropdown1.append("option").text("Any").property("value", "Any")
-//         dropdown1.append("option").text("--").property("value", "")
-//         dropdown2.append("option").text("--").property("value", "")
-//         dropdown3.append("option").text("--").property("value", "")
+    })
 
-//     })
+    // d3.select('#selDataset1').property('value', 'All');
+    // d3.select('#selDataset2').property('value', '');
+    // d3.select('#selDataset3').property('value', '');
+}
 
-//     d3.select('#selDataset1').property('value', '');
-//     d3.select('#selDataset2').property('value', '');
-//     d3.select('#selDataset3').property('value', '');
-// }
-
-// init()
+init()
