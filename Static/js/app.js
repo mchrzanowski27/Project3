@@ -88,12 +88,12 @@ function init() {
     // let dropdown3 = d3.select("#selDataset3")
 
     //read in the data for dropdown 1
-    d3.json("api/data").then(function (data) {
+    d3.json("/api/data").then(function (data) {
 
         let event_types = data.sub_event_type;
         console.log(event_types)
         for (event_type of event_types) {
-            dropdown1.append("option").text(event_date).property("value", event_date);
+            dropdown1.append("option").text(event_type).property("value", event_type);
         }
         // dropdown1.append("option").text("All").property("value", "All")
         // dropdown1.append("option").text("Any").property("value", "Any")
