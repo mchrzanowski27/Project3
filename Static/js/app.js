@@ -10,6 +10,8 @@ d3.json("/api/data").then(function(data){
     let actor = "Military Forces of Russia (2000-)";
     // let actor = "Military Forces of Ukraine (2019-)";
     let type = "Explosions";
+
+    // let date = "2022-02-24";
     
     let filteredActor = data.filter(row => row.ACTOR1 === actor);
     console.log(filteredActor);
