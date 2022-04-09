@@ -10,7 +10,7 @@ function charts (actor, type) {
         let filteredActor = data.filter(row => row.ACTOR1 === actor);
         console.log(filteredActor);
 
-        if (type = "any") {
+        if (type === "Any") {
             filteredEvent = filteredActor;
             console.log(filteredEvent);
         }
@@ -68,7 +68,7 @@ function charts (actor, type) {
     });
 };
 
-charts("Military Forces of Russia (2000-)", "Any");
+charts("Military Forces of Russia (2000-)", "Explosions");
 
 //JS file - Phoebe messing with dropdown ideas
 

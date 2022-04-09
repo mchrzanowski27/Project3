@@ -1,1 +1,1 @@
-web: gunicorn pet_pals.app:app
+web: gunicorn ukraine-conflict.app:app
