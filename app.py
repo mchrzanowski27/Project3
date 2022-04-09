@@ -22,7 +22,7 @@ db = SQLAlchemy(app)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index2.html")
     # return (
     #     "Welcome!<br/>"
     #     "Available routes:<br/>"
@@ -32,11 +32,6 @@ def home():
 
 @app.route("/api/data", methods=['POST', 'GET'])
 def data():
-    # if request.method == 'POST':
-    #     events1 = db.session.query(Ukraine).filter_by(EVENT_DATE=date).all()
-    #     events2 = db.session.query(Ukraine).filter_by(EVENT_TYPE=event).all()
-    #     events3 = db.session.query(Ukraine).filter_by(ACTOR1=actor).all()
-    # elif:
     from models import Ukraine
     
     conflicts = db.session.query(Ukraine.EVENT_ID_CNTY, Ukraine.EVENT_ID_NO_CNTY, Ukraine.EVENT_DATE, Ukraine.EVENT_TYPE, Ukraine.SUB_EVENT_TYPE, Ukraine.ACTOR1, Ukraine.LOCATION, Ukraine.LATITUDE, Ukraine.LONGITUDE, Ukraine.SOURCE, Ukraine.NOTES, Ukraine.FATALITIES).all()
@@ -64,4 +59,3 @@ def data():
 if __name__ == "__main__":
     app.run()
 
-    # request.method == 'GET':

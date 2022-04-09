@@ -1,29 +1,74 @@
-d3.json("/api/data").then(function(data){
-    console.log(data);
+function charts (actor, type) {
+    d3.json("/api/data").then(function(data){
+        console.log(data);
 
-    console.log(data[0].ACTOR1)
-    
-    let actors = []
-    for (row of data)
-    //    actors = row.ACTOR1;
-        console.log(row.ACTOR1);
+        // let actor = "Military Forces of Russia (2000-)";
+        // let actor = "Military Forces of Ukraine (2019-)";
+        // let type = "Explosions";
 
-    // console.log(actors);
+        //Getting data for graphs
+        let filteredActor = data.filter(row => row.ACTOR1 === actor);
+        console.log(filteredActor);
 
-    let trace1 = [
-        {
-            x: data.map(row=> row.ACTOR1),
-            y: data.map(row=> row.FATALITIES),
-            type: "bar"
+        if (type = "any") {
+            filteredEvent = filteredActor;
+            console.log(filteredEvent);
         }
-    ];
 
-    let layout = {
-        title: "Fatalities by Actor"
-    };
+        else {
+            filteredEvent = filteredActor.filter(row => row.EVENT_TYPE === type);
+            console.log(filteredEvent);
+        };
 
-    Plotly.newPlot("graph1", trace1, layout);
-});
+        let fatalities = filteredEvent.map(row=> row.FATALITIES);
+        console.log(fatalities);
+
+        let sub_type = filteredEvent.map(row=> row.SUB_EVENT_TYPE);
+        console.log(sub_type);
+
+        //Bar graph of fatalities by actor
+        let trace1 = [
+            {
+                values: fatalities,
+                labels: sub_type,
+                type: "pie",    
+            }
+        ];
+            
+        let layout = {
+            title: "Fatalities by Actor",
+            height: 600,
+            width: 700,
+        };
+
+        Plotly.newPlot("graph1", trace1, layout);
+
+
+        let trace2 = [
+            {
+                x: filteredEvent.map(row=> row.EVENT_DATE),
+                y: filteredEvent.map(row=> row.FATALITIES),
+                type: "bar",
+                transforms: [{
+                    type: "groupby",
+                    groups: filteredEvent.map(row => row.SUB_EVENT_TYPE),
+                }],
+            }
+        ];
+
+        let layout2 = {
+            title: "Fatalities by Date",
+            yaxis: {
+                title: "Fatalities",
+            }
+        };
+
+        Plotly.newPlot("graph2", trace2, layout2);
+
+    });
+};
+
+charts("Military Forces of Russia (2000-)", "Any");
 
 //JS file - Phoebe messing with dropdown ideas
 
