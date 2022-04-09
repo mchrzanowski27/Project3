@@ -33,7 +33,6 @@ function init() {
 
     let dropdown1 = d3.select("#selDataset1")
     // let dropdown2 = d3.select("#selDataset2")
-    // let dropdown3 = d3.select("#selDataset3")
 
     //read in the data for dropdown 1
 
