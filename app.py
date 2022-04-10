@@ -9,27 +9,25 @@ from flask import (
 import psycopg2
 from config import username
 from config import password
+from config import databse_uri
 
 app = Flask(__name__)
 
 from flask_sqlalchemy import SQLAlchemy
-app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{username}:{password}@localhost:5432/Project3"
+# app.config['SQLALCHEMY_DATABASE_URI'] = f"postgresql://{username}:{password}@localhost:5432/Project3"
+app.config['SQLALCHEMY_DATABASE_URI'] = databse_uri
 
 # Remove tracking modifications
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+#Home route with template
 @app.route("/")
 def home():
     return render_template("index2.html")
-    # return (
-    #     "Welcome!<br/>"
-    #     "Available routes:<br/>"
-    #     f"/api/data"
-    # )
 
-
+# Route to get data from database
 @app.route("/api/data", methods=['POST', 'GET'])
 def data():
     from models import Ukraine
