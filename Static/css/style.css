@@ -237,3 +237,10 @@ body {
   .slider_section #carouselExampleIndicators li.active {
     border-color: #133e3f;
   }  
+
+  .ag-theme-alpine{
+
+    height: 100%;
+    width: 100%;
+
+  }
